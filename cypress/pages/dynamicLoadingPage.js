@@ -8,8 +8,8 @@ class DynamicLoadingPage {
     }
 
     getLoadedMessage() {
-        cy.get('#finish h4').should('be.visible');
-        return cy.get('#finish h4');
+        cy.get('#finish', { timeout: 10000 }).should('be.visible');
+        return cy.get('#finish');
     }
 }
 

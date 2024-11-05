@@ -1,3 +1,5 @@
+import 'cypress-file-upload';
+
 class FileUploadPage {
     navigate() {
         cy.visit('/upload');
