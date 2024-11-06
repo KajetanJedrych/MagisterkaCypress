@@ -1,9 +1,15 @@
 const { defineConfig } = require('cypress');
+const { downloadFile } = require('cypress-downloadfile');
+
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // Optionally configure more plugins here
+      // Register the downloadFile task
+      on('task', {
+        downloadFile: downloadFile,
+      });
+      return config;
     },
     baseUrl: 'https://the-internet.herokuapp.com',
     chromeWebSecurity: false
@@ -12,5 +18,5 @@ module.exports = defineConfig({
   retries: {
     runMode: 2, // retry twice in CI mode
     openMode: 0 // no retries locally
-  }
+  },
 });

@@ -3,3 +3,5 @@ Cypress.Commands.add('login', (username, password) => {
     cy.get('input[name="password"]').type(password);
     cy.get('button[type="submit"]').click();
 });
+require('cypress-downloadfile/lib/downloadFileCommand');
+require('cypress-xpath');

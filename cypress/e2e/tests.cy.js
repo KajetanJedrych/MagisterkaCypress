@@ -1,9 +1,9 @@
 import loginPage from '../pages/loginPage';
 import dynamicLoadingPage from '../pages/dynamicLoadingPage';
-import fileUploadPage from '../pages/fileUploadPage';
+import fileUploadPage, {FileUploadPage} from '../pages/fileUploadPage';
 import jsAlertsPage from '../pages/jsAlertsPage';
 import dragAndDropPage from '../pages/dragAndDropPage';
-import downloadPage from '../pages/downloadPage';
+import downloadPage, {DownloadPage} from '../pages/downloadPage';
 import credentials from '../fixtures/credentials.json';
 
 describe('UI Tests', () => {
@@ -33,9 +33,10 @@ describe('UI Tests', () => {
 
     describe('File Upload Tests', () => {
         it('Should upload a file', () => {
-            fileUploadPage.navigate();
-            fileUploadPage.uploadFile('sampleFile.txt');
-            fileUploadPage.getUploadMessage().should('contain', 'sampleFile.txt');
+            FileUploadPage.navigate();
+            FileUploadPage.goToFileUpload();
+            FileUploadPage.uploadFile('sampleFile.txt');
+            FileUploadPage.getUploadMessage().should('contain', 'File Uploaded!');
         });
     });
 
@@ -78,10 +79,15 @@ describe('UI Tests', () => {
     });
 
     describe('File Download Tests', () => {
+        const fileName = 'evening.png';
+        const downloadPage = new DownloadPage();
         it('Should download a file', () => {
             downloadPage.navigate();
-            downloadPage.downloadFile('webdriverIO.png');
-            cy.readFile('cypress/downloads/webdriverIO.png').should('exist');
+            downloadPage.goToFileDownload();
+            downloadPage.downloadFile(fileName);
+            const filePath = `cypress/downloads/${fileName}`;
+            cy.readFile(filePath).should('exist');
+            cy.readFile(filePath).should('not.be.empty');
         });
     });
 });
