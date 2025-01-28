@@ -1,15 +1,10 @@
 const { defineConfig } = require('cypress');
-const { downloadFile } = require('cypress-downloadfile');
 
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // Register the downloadFile task
-      on('task', {
-        downloadFile: downloadFile,
-      });
-      return config;
+
     },
     baseUrl: 'https://the-internet.herokuapp.com',
     chromeWebSecurity: false
