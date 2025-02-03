@@ -1,9 +1,9 @@
 import loginPage from '../pages/loginPage';
 import dynamicLoadingPage from '../pages/dynamicLoadingPage';
-import fileUploadPage, {FileUploadPage} from '../pages/fileUploadPage';
+import FileUploadPage from '../pages/fileUploadPage';
 import jsAlertsPage from '../pages/jsAlertsPage';
 import dragAndDropPage from '../pages/dragAndDropPage';
-import downloadPage, {DownloadPage} from '../pages/downloadPage';
+import DownloadPage from '../pages/downloadPage';
 import credentials from '../fixtures/credentials.json';
 
 describe('UI Tests', () => {
@@ -80,11 +80,11 @@ describe('UI Tests', () => {
 
     describe('File Download Tests', () => {
         const fileName = 'evening.png';
-        const downloadPage = new DownloadPage();
+    
         it('Should download a file', () => {
-            downloadPage.navigate();
-            downloadPage.goToFileDownload();
-            downloadPage.downloadFile(fileName);
+            DownloadPage.navigate();
+            DownloadPage.goToFileDownload();
+            DownloadPage.downloadFile(fileName);
             const filePath = `cypress/downloads/${fileName}`;
             cy.readFile(filePath).should('exist');
             cy.readFile(filePath).should('not.be.empty');

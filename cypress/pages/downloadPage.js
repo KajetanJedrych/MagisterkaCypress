@@ -1,4 +1,4 @@
-export class DownloadPage {
+class DownloadPage {
     fileDownloadLink = '//*[@id="content"]/ul/li[17]/a';
     downloadFileLink = '.example a[href="download/webdriverIO.png"]';
 
@@ -15,3 +15,4 @@ export class DownloadPage {
         cy.task('downloadFile', { url: downloadUrl, directory: 'cypress/downloads', filename: fileName });
     }
 }
+export default new DownloadPage();

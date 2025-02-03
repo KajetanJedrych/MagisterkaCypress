@@ -1,6 +1,6 @@
 import 'cypress-file-upload';
 
-export class FileUploadPage {
+class FileUploadPage {
     static fileUploadLink = 'text=File Upload';
     static chooseFileInput = 'input#file-upload'; // File input field
     static uploadButton = 'input#file-submit'; // Upload button
@@ -25,3 +25,4 @@ export class FileUploadPage {
     }
 
 }
+export default new FileUploadPage();
