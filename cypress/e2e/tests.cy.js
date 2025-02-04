@@ -79,14 +79,13 @@ describe('UI Tests', () => {
     });
 
     describe('File Download Tests', () => {
-        const fileName = 'webdriverIO.png'; // Update with the actual filename from the page
-        
-        it('Should download a file', () => {
+        const fileName = 'webdriverIO.png';
+    
+        it('Test Case 6.1 – Pobieranie pliku', () => {
             DownloadPage.navigate();
             DownloadPage.goToFileDownload();
             DownloadPage.downloadFile(fileName);
-            
-            // Check if file exists and is not empty
+    
             const filePath = `cypress/downloads/${fileName}`;
             cy.readFile(filePath).should('exist');
             cy.readFile(filePath).should('not.be.empty');

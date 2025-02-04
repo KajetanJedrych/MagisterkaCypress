@@ -1,14 +1,21 @@
 class DragAndDropPage {
+    constructor() {
+        this.columnA = '#column-a';
+        this.columnB = '#column-b';
+        this.dragAndDropLink = 'a[href="/drag_and_drop"]';
+    }
+
     navigate() {
-        cy.visit('/drag_and_drop');
+        cy.visit('https://the-internet.herokuapp.com/');
+    }
+
+    goToDragAndDrop() {
+        cy.get(this.dragAndDropLink).click();
     }
 
     dragElementAToElementB() {
-        // Use force to ensure dragging works
-        cy.get('#column-a').trigger('mousedown', { which: 1 })
-          .get('#column-b')
-          .trigger('mousemove')
-          .trigger('mouseup', { force: true });
+        cy.get(this.columnA).trigger('mousedown', { which: 1 });
+        cy.get(this.columnB).trigger('mousemove').trigger('mouseup', { force: true });
     }
 
     getColumnText(columnId) {
