@@ -1,13 +1,6 @@
-import 'cypress-file-upload';
-
 class FileUploadPage {
-    static fileUploadLink = 'text=File Upload';
-    static chooseFileInput = 'input#file-upload'; // File input field
-    static uploadButton = 'input#file-submit'; // Upload button
-    static uploadMessage = 'h3'; // Success message
-
     static navigate() {
-        cy.visit('https://the-internet.herokuapp.com/');
+        cy.visit('/');
     }
 
     static goToFileUpload() {
@@ -15,14 +8,13 @@ class FileUploadPage {
     }
 
     static uploadFile(filePath) {
-        // Requires cypress-file-upload plugin
-        cy.get(this.chooseFileInput).attachFile(filePath);
-        cy.get(this.uploadButton).click();
+        cy.get('input#file-upload').attachFile(filePath);
+        cy.get('input#file-submit').click();
     }
 
     static getUploadMessage() {
-        return cy.get(this.uploadMessage).invoke('text');
+        return cy.get('h3').invoke('text');
     }
-
 }
-export default new FileUploadPage();
+
+export default FileUploadPage;
