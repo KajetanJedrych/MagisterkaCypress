@@ -1,3 +1,5 @@
+import '@4tw/cypress-drag-drop';
+
 class DragAndDropPage {
     constructor() {
         this.columnA = '#column-a';
@@ -14,8 +16,7 @@ class DragAndDropPage {
     }
 
     dragElementAToElementB() {
-        cy.get(this.columnA).trigger('mousedown', { which: 1 });
-        cy.get(this.columnB).trigger('mousemove').trigger('mouseup', { force: true });
+        cy.get(this.columnA).drag(this.columnB);
     }
 
     getColumnText(columnId) {

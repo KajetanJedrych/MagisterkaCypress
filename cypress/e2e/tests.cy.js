@@ -68,11 +68,12 @@ describe('UI Tests', () => {
     describe('Drag and Drop Tests', () => {
         it('Should drag element A to element B', () => {
             dragAndDropPage.navigate();
-            dragAndDropPage.getColumnText('#column-a').then((textA) => {
-                dragAndDropPage.getColumnText('#column-b').then((textB) => {
+            dragAndDropPage.goToDragAndDrop();
+            dragAndDropPage.getColumnText('#column-a').then((A) => {
+                dragAndDropPage.getColumnText('#column-b').then((B) => {
                     dragAndDropPage.dragElementAToElementB();
-                    dragAndDropPage.getColumnText('#column-a').should('equal', textB);
-                    dragAndDropPage.getColumnText('#column-b').should('equal', textA);
+                    dragAndDropPage.getColumnText('#column-a').should('equal', B);
+                    dragAndDropPage.getColumnText('#column-b').should('equal', A);
                 });
             });
         });
