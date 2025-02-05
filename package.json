@@ -1,16 +1,28 @@
 {
-  "name": "cypress",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "cypress": "^14.0.0"
-  }
+    "name": "cypress-ui-tests",
+    "version": "1.0.0",
+    "description": "UI automation tests using Cypress",
+    "main": "index.js",
+    "scripts": {
+        "test": "cypress run",
+        "open": "cypress open"
+    },
+    "dependencies": {
+        "cypress-ui-tests": "file:"
+    },
+    "devDependencies": {
+        "@4tw/cypress-drag-drop": "^2.3.0",
+        "axios": "^1.7.9",
+        "cypress": "^14.0.1",
+        "cypress-downloadfile": "^1.2.0",
+        "cypress-file-upload": "^5.0.8",
+        "cypress-xpath": "^1.8.0"
+    },
+    "keywords": [
+        "cypress",
+        "ui-tests",
+        "automation"
+    ],
+    "author": "",
+    "license": "MIT"
 }

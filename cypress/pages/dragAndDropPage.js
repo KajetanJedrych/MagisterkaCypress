@@ -1,10 +1,22 @@
+import '@4tw/cypress-drag-drop';
+
 class DragAndDropPage {
+    constructor() {
+        this.columnA = '#column-a';
+        this.columnB = '#column-b';
+        this.dragAndDropLink = 'a[href="/drag_and_drop"]';
+    }
+
     navigate() {
-        cy.visit('/drag_and_drop');
+        cy.visit('https://the-internet.herokuapp.com/');
+    }
+
+    goToDragAndDrop() {
+        cy.get(this.dragAndDropLink).click();
     }
 
     dragElementAToElementB() {
-        cy.get('#column-a').drag('#column-b');
+        cy.get(this.columnA).drag(this.columnB);
     }
 
     getColumnText(columnId) {

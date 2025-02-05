@@ -1,9 +1,9 @@
 import loginPage from '../pages/loginPage';
 import dynamicLoadingPage from '../pages/dynamicLoadingPage';
-import fileUploadPage, {FileUploadPage} from '../pages/fileUploadPage';
+import FileUploadPage from '../pages/fileUploadPage';
 import jsAlertsPage from '../pages/jsAlertsPage';
 import dragAndDropPage from '../pages/dragAndDropPage';
-import downloadPage, {DownloadPage} from '../pages/downloadPage';
+import DownloadPage from '../pages/downloadPage';
 import credentials from '../fixtures/credentials.json';
 
 describe('UI Tests', () => {
@@ -68,23 +68,25 @@ describe('UI Tests', () => {
     describe('Drag and Drop Tests', () => {
         it('Should drag element A to element B', () => {
             dragAndDropPage.navigate();
-            dragAndDropPage.getColumnText('#column-a').then((textA) => {
-                dragAndDropPage.getColumnText('#column-b').then((textB) => {
+            dragAndDropPage.goToDragAndDrop();
+            dragAndDropPage.getColumnText('#column-a').then((A) => {
+                dragAndDropPage.getColumnText('#column-b').then((B) => {
                     dragAndDropPage.dragElementAToElementB();
-                    dragAndDropPage.getColumnText('#column-a').should('equal', textB);
-                    dragAndDropPage.getColumnText('#column-b').should('equal', textA);
+                    dragAndDropPage.getColumnText('#column-a').should('equal', B);
+                    dragAndDropPage.getColumnText('#column-b').should('equal', A);
                 });
             });
         });
     });
 
     describe('File Download Tests', () => {
-        const fileName = 'evening.png';
-        const downloadPage = new DownloadPage();
-        it('Should download a file', () => {
-            downloadPage.navigate();
-            downloadPage.goToFileDownload();
-            downloadPage.downloadFile(fileName);
+        const fileName = 'webdriverIO.png';
+    
+        it('Test Case 6.1 – Pobieranie pliku', () => {
+            DownloadPage.navigate();
+            DownloadPage.goToFileDownload();
+            DownloadPage.downloadFile(fileName);
+    
             const filePath = `cypress/downloads/${fileName}`;
             cy.readFile(filePath).should('exist');
             cy.readFile(filePath).should('not.be.empty');
