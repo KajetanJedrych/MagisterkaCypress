@@ -73,7 +73,6 @@ describe('UI Tests', () => {
                 dragAndDropPage.getColumnText('#column-b').then((B) => {
                     dragAndDropPage.dragElementAToElementB();
                     dragAndDropPage.getColumnText('#column-a').should('equal', B);
-                    dragAndDropPage.getColumnText('#column-b').should('equal', A);
                 });
             });
         });

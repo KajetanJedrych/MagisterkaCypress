@@ -16,6 +16,7 @@
         "cypress": "^14.0.1",
         "cypress-downloadfile": "^1.2.0",
         "cypress-file-upload": "^5.0.8",
+        "cypress-real-events": "^1.14.0",
         "cypress-xpath": "^1.8.0"
     },
     "keywords": [
